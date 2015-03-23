@@ -51,12 +51,17 @@ describe('data', function() {
 		assert(null === data.remove(null, 'foo'))
 	})
 
-	it('can remove all', function() {
+	it('can get or remove all', function() {
 		var data = new Data
 		var obj = {}
 		data.set(obj, 'foo', 1)
 		data.set(obj, 'foo2', 2)
 		data.set(obj, 'foo3', 3)
+		assert.deepEqual({
+			foo: 1,
+			foo2: 2,
+			foo3: 3
+		}, data.get(obj))
 		assert(2 == data.get(obj, 'foo2'))
 		data.remove(obj)
 		assert(undefined === data.get(obj, 'foo2'))

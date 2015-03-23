@@ -11,6 +11,9 @@ var proto = Data.prototype
 
 proto.get = function(owner, key) {
 	var data = this.getData(owner)
+	if (null == key) {
+		return data
+	}
 	return data[key]
 }
 
