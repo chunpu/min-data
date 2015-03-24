@@ -51,6 +51,7 @@ proto.getData = function(owner, shouldCreate) {
 
 proto.discard = function(owner) {
 	if (owner && owner[this.expando]) {
-		delete owner[this.expando]
+		// old IE will crash on element `delete`
+		owner[this.expando] = undefined
 	}
 }
